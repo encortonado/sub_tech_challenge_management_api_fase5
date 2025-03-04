@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/test_db
+    username: test_user
+    password: test_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none  # Cria e remove as tabelas em cada teste
+    show-sql: false  # Não exibir SQL no console
+  liquibase:
+    enabled: false  # Desativa o Liquibase nos testes
