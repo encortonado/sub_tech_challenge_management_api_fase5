@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: posfiap      # Defina o nome de usuário
+      POSTGRES_PASSWORD: posfiap2  # Defina a senha
+      POSTGRES_DB: challenge     # Nome do banco de dados
+    ports:
+      - "5432:5432"               # Mapeamento da porta para acesso externo
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistência de dados
+
+volumes:
+  postgres_data:
+    driver: local

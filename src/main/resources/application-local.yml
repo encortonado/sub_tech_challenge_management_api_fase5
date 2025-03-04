@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: sub_tech_challenge_management_api_fase4
+  datasource:
+    url: jdbc:postgresql://localhost:5432/challenge
+    driver-class-name: org.postgresql.Driver
+    username: posfiap
+    password: posfiap2
+  jpa:
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  sql:
+    init:
+      mode: always
