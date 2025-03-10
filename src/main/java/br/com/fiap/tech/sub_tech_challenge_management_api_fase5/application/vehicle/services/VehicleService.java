@@ -1,6 +1,7 @@
 package br.com.fiap.tech.sub_tech_challenge_management_api_fase5.application.vehicle.services;
 
 import br.com.fiap.tech.sub_tech_challenge_management_api_fase5.adapter.entrypoint.persistance.VehicleRepository;
+import br.com.fiap.tech.sub_tech_challenge_management_api_fase5.adapter.outbound.publisher.VehicleDataPublisher;
 import br.com.fiap.tech.sub_tech_challenge_management_api_fase5.application.vehicle.entities.VehicleEntity;
 import br.com.fiap.tech.sub_tech_challenge_management_api_fase5.application.vehicle.ports.IVehicleService;
 import br.com.fiap.tech.sub_tech_challenge_management_api_fase5.infrastructure.exceptions.CustomErrorTypeException;
@@ -25,12 +26,12 @@ public class VehicleService implements IVehicleService {
 
     @Override
     public VehicleEntity registerVehicle(VehicleEntity vehicleEntityDTO) {
+        vehicleEntityDTO.setHold(false);
         return vehicleRepository.save(vehicleEntityDTO);
     }
 
     @Override
     public VehicleEntity updateVehicleRegister(VehicleEntity vehicleEntity) {
-
         findById(vehicleEntity.getId());
         return vehicleRepository.save(vehicleEntity);
     }
@@ -41,5 +42,19 @@ public class VehicleService implements IVehicleService {
                 .orElseThrow(() -> new CustomErrorTypeException("Veiculo nao encontrado"));
     }
 
+    @Override
+    public void holdVehicle(Long id) {
+        VehicleEntity vehicleEntity = findById(id);
+        vehicleEntity.setHold(true);
+        vehicleRepository.save(vehicleEntity);
 
+    }
+
+    @Override
+    public void releaseVehicle(Long id) {
+        VehicleEntity vehicleEntity = findById(id);
+        vehicleEntity.setHold(false);
+        vehicleRepository.save(vehicleEntity);
+
+    }
 }

@@ -4,5 +4,7 @@ public interface IVehicleService extends
     IRegisterVehicleUseCase,
     IUpdateVehicleRegisterUseCase,
     IListVehiclesUseCase,
-    IFindVehicleById {
+    IFindVehicleById,
+    IHoldVehicleUseCase,
+    IReleaseVehicleUseCase {
 }

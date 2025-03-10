@@ -39,4 +39,6 @@ public class VehicleEntity {
     @Positive(message = "Price must be positive")
     private double price;
 
+    private boolean isHold;
+
 }

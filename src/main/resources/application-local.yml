@@ -1,6 +1,11 @@
 spring:
   application:
     name: sub_tech_challenge_management_api_fase4
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   datasource:
     url: jdbc:postgresql://localhost:5432/challenge
     driver-class-name: org.postgresql.Driver
